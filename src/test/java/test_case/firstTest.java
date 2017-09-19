@@ -72,6 +72,7 @@ public class firstTest {
     @After
     public void realse() {
         sqlSession.close();
+        System.out.println(123);
     }
 
 }
