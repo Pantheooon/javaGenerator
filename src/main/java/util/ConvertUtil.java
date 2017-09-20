@@ -34,6 +34,12 @@ public class ConvertUtil {
         return result.toString();
     }
 
+
+    /**
+     * 根据type生成该字段的类型
+     * @param type
+     * @return
+     */
     public static String javaType(String type) {
         if (type == null || type == "") {
             return "";
