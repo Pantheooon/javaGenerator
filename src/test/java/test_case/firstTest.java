@@ -1,7 +1,6 @@
 package test_case;
 
 import dao.ITableDao;
-import model.ParamUtil;
 import model.TableColumn;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
