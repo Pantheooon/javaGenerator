@@ -3,11 +3,10 @@ package parse;
 import java.util.Map;
 
 /**
- * Created by admin on 2017/9/20.
+ * Created by admin on 2017/9/21.
  */
-public class ParseBean extends AbstractParseFilter {
-
-    public ParseBean(String outUrl) {
+public class ParseDao extends AbstractParseFilter {
+    public ParseDao(String outUrl) {
         super(outUrl);
     }
 

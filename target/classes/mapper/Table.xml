@@ -6,11 +6,12 @@
         <result property="type" column="Type"/>
         <result property="comment" column="Comment"/>
     </resultMap>
+
     <select id="showTables" resultType="String">
         show tables
     </select>
 
     <select id="showFields" resultMap="tableResultMap" statementType="STATEMENT" parameterType="String" >
-        show full fields from ${tableName}
+        show full fields from `${tableName}`
     </select>
 </mapper>

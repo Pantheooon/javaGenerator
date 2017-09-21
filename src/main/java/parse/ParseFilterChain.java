@@ -1,7 +1,5 @@
 package parse;
 
-import org.apache.log4j.spi.LoggerFactory;
-
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -11,7 +9,7 @@ import java.util.logging.Logger;
  */
 public class ParseFilterChain {
 
-    private List<ParseFilter> parseFilterList;
+    private List<AbstractParseFilter> parseFilterList;
 
     private Map<String, Object> map;
 
@@ -24,6 +22,13 @@ public class ParseFilterChain {
 
     private void init() {
         log.info("初始化解析器");
+        String path = System.getProperty("usr.dir")+"/out";
+        parseFilterList.add(new ParseControl(path+"/control"));
+        parseFilterList.add(new ParseService(path+"/service"));
+        parseFilterList.add(new ParseServiceImpl(path+"/serviceImpl"));
+        parseFilterList.add(new ParseDao(path+"/dao"));
+        parseFilterList.add(new ParseBean(path+"/bean"));
+        parseFilterList.add(new ParseXml(path+"/xml"));
     }
 
     public void parse() {
@@ -31,8 +36,11 @@ public class ParseFilterChain {
             throw new NullPointerException("请初始化解析器");
         }
         log.info("开始解析");
-        for (ParseFilter parseFilter : parseFilterList) {
-            parseFilter.parseFreeMarker(map);
+        for (String s : map.keySet()) {
+            map.get()
+        }
+        for (AbstractParseFilter parseFilter : parseFilterList) {
+            parseFilter.parseAndOut(map);
         }
 
     }

@@ -42,8 +42,9 @@ public class firstTest {
         ITableDao mapper = sqlSession.getMapper(ITableDao.class);
         List<String> strings = mapper.showTables();
         for (String string : strings) {
-            List<TableColumn> tableColumns = mapper.showFields("`" + string + "`");
-            map.put(ConvertUtil.camelName(string), tableColumns);
+            System.out.println(string);
+            List<TableColumn> tableColumns = mapper.showFields(string);
+            map.put(string, tableColumns);
         }
         System.out.println(1);
     }
