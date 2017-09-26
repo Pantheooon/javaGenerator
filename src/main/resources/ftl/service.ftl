@@ -1,6 +1,6 @@
-package ${baseUrl}.${IServiceUrl}
+package ${urlMap.baseUrl}.${urlMap.serviceUrl}
 
-import ${baseUrl}.${bean}.${tableName?cap_first};
+import ${urlMap.baseUrl}.${urlMap.beanUrl}.${tableName?cap_first};
 
 public interface I${tableName?cap_first}Service{
 

@@ -1,17 +1,16 @@
-package ${baseUrl}.${controlUrl}
+package ${urlMap.baseUrl}.${urlMap.controlUrl}
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ${baseUrl}.${IServiceUrl}.I${tableName?cap_first}Service
-import ${baseUrl}.${bean}.${tableName?cap_first};
+import ${urlMap.baseUrl}.${urlMap.serviceUrl}.I${tableName?cap_first}Service
+import ${urlMap.baseUrl}.${urlMap.beanUrl}.${tableName?cap_first};
 /**
 * Controller of ${tableName}
 *
 * @author ${author}
-* @date ${date}
 */
 @Controller
 @RequestMapping("/${tableName}")
@@ -42,7 +41,7 @@ public void insert(${tableName?cap_first} ${tableName}){
 * 删除${tableName}
 *
 */
-@RequestMapping(value = "/insert")
+@RequestMapping(value = "/delete")
 public void delete(Long id){
    ${tableName}Service.delete(${tableName});
 }
@@ -51,7 +50,7 @@ public void delete(Long id){
 * 更改${tableName}
 *
 */
-@RequestMapping(value = "/insert")
+@RequestMapping(value = "/update")
 public void update(${tableName?cap_first} ${tableName}){
     ${tableName}Service.update(${tableName});
 }

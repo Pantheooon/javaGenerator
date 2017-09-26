@@ -1,5 +1,6 @@
 package test_case;
 
+import client.Gogogo;
 import dao.ITableDao;
 import model.TableColumn;
 import org.apache.ibatis.io.Resources;
@@ -10,7 +11,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import util.ConvertUtil;
-import util.GetTableNames;
 import util.Resource;
 
 import java.io.IOException;
@@ -62,17 +62,22 @@ public class firstTest {
 //        ParamUtil.generateAll = b;
 
         String table_name = Resource.getValue("table_name");
-        List<String> tableNames = GetTableNames.getTableNames(table_name);
-        for (String tableName : tableNames) {
-            System.out.println(tableName);
-        }
+//        List<String> tableNames = TableUtil.getTableNames(table_name);
+//        for (String tableName : tableNames) {
+//            System.out.println(tableName);
+//        }
     }
 
 
     @After
     public void realse() {
         sqlSession.close();
-        System.out.println(123);
     }
 
+
+    @Test
+    public void test3() throws Exception {
+        Gogogo gogogo = new Gogogo();
+        gogogo.start();
+    }
 }

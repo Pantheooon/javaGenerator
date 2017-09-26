@@ -1,8 +1,11 @@
 package parse;
 
+import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.logging.LogFactory;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 /**
  * Created by admin on 2017/9/20.
@@ -11,37 +14,38 @@ public class ParseFilterChain {
 
     private List<AbstractParseFilter> parseFilterList;
 
-    private Map<String, Object> map;
 
-    private Logger log = Logger.getLogger("ParseFilterChain");
+    private static final Log log = LogFactory.getLog(ParseFilterChain.class);
 
-    public ParseFilterChain(Map<String, Object> map) {
+    public ParseFilterChain() {
         init();
-        this.map = map;
     }
 
     private void init() {
-        log.info("初始化解析器");
-        String path = System.getProperty("usr.dir")+"/out";
-        parseFilterList.add(new ParseControl(path+"/control"));
-        parseFilterList.add(new ParseService(path+"/service"));
-        parseFilterList.add(new ParseServiceImpl(path+"/serviceImpl"));
-        parseFilterList.add(new ParseDao(path+"/dao"));
-        parseFilterList.add(new ParseBean(path+"/bean"));
-        parseFilterList.add(new ParseXml(path+"/xml"));
+        log.debug("开始初始化");
+        parseFilterList = new ArrayList<AbstractParseFilter>();
+        parseFilterList.add(new ParseImpl("control"));
+        parseFilterList.add(new ParseImpl("service"));
+        parseFilterList.add(new ParseImpl("serviceImpl"));
+        parseFilterList.add(new ParseImpl("dao"));
+        parseFilterList.add(new ParseImpl("bean"));
+        parseFilterList.add(new ParseImpl("mapper"));
     }
 
-    public void parse() {
-        if (parseFilterList == null || !parseFilterList.isEmpty()) {
+    public void parse(Map<String, Object> root) throws Exception {
+        if (parseFilterList == null || parseFilterList.isEmpty()) {
             throw new NullPointerException("请初始化解析器");
         }
-        log.info("开始解析");
-        for (String s : map.keySet()) {
-            map.get()
-        }
+        log.debug("开始解析");
         for (AbstractParseFilter parseFilter : parseFilterList) {
-            parseFilter.parseAndOut(map);
+            parseFilter.parseFreeMarker(root);
         }
 
+    }
+
+    public void realse() throws Exception {
+        for (AbstractParseFilter parseFilter : parseFilterList) {
+            parseFilter.realse();
+        }
     }
 }

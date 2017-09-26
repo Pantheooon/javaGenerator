@@ -12,6 +12,7 @@ public class TableColumn {
     private String javaName;
     private String javaType;
 
+
     public String getField() {
         return field;
     }
@@ -41,4 +42,23 @@ public class TableColumn {
         this.comment = comment;
         return this;
     }
+
+    public String getJavaName() {
+        return javaName;
+    }
+
+    public TableColumn setJavaName(String javaName) {
+        this.javaName = javaName;
+        return this;
+    }
+
+    public String getJavaType() {
+        return javaType;
+    }
+
+    public TableColumn setJavaType(String javaType) {
+        this.javaType = javaType;
+        return this;
+    }
+
 }
