@@ -1,8 +1,8 @@
-package ${baseUrl}.${serviceImplUrl}
+package ${urlMap.baseUrl}.${urlMap.serviceImplUrl}
 
 import org.springframework.beans.factory.annotation.Autowired;
-import ${baseUrl}.${daoUrl}.I${tableName?cap_first}Dao;
-import ${baseUrl}.${bean}.${tableName?cap_first};
+import ${urlMap.baseUrl}.${urlMap.daoUrl}.I${tableName?cap_first}Dao;
+import ${urlMap.baseUrl}.${urlMap.beanUrl}.${tableName?cap_first};
 public Class ${tableName?cap_first}Impl implements I${tableName?cap_first}Service{
 
 
