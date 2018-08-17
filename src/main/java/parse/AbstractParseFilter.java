@@ -38,12 +38,13 @@ public abstract class AbstractParseFilter {
     }
 
     public void realse() throws Exception {
-        if(out == null){
+        if (out == null) {
             throw new Exception("释放资源出错");
         }
         out.close();
 
     }
+
     protected String getFileName(String name) {
         String fileName = "";
         String upperFirst = name.substring(0, 1).toUpperCase() + name.substring(1);
@@ -58,7 +59,7 @@ public abstract class AbstractParseFilter {
                 fileName = upperFirst + "ServiceImpl.java";
                 break;
             case "dao":
-                fileName = upperFirst + "Dao.java";
+                fileName = "I" + upperFirst + "Dao.java";
                 break;
             case "mapper":
                 fileName = upperFirst + ".xml";

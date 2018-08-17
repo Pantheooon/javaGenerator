@@ -18,10 +18,10 @@ public class ParseFilterChain {
     private static final Log log = LogFactory.getLog(ParseFilterChain.class);
 
     public ParseFilterChain() {
-        init();
+        initFilterList();
     }
 
-    private void init() {
+    private void initFilterList() {
         log.debug("开始初始化");
         parseFilterList = new ArrayList<AbstractParseFilter>();
         parseFilterList.add(new ParseImpl("control"));
